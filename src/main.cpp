@@ -26,6 +26,7 @@ void loop(void)
 	static wifi_client wc;
 
 	
+
 	static unsigned long step = 0;
 	static bool fall = false;
 	if (ag.is_active())
@@ -70,21 +71,29 @@ void loop(void)
 			std::optional<int> bpm = hm.get_beats_per_minute(ir);
 			if (bpm)
 				latest_valid_bpm = bpm;
+			latest_valid_spo2 = latest_valid_bpm;
 
+			/*
 			// TODO: Implement Blood Oxygen function.
 			std::optional<int> spo2 = hm.get_blood_oxygen(ir, red);
 			if (spo2)
-				latest_valid_spo2 = spo2;
+				latest_valid_spo2 = bpm;
+			*/
 		}
 	}
 
 
 	static std::optional<double> latest_valid_latitude = {};
 	static std::optional<double> latest_valid_longitude = {};
-	if (gps.is_active() && gps.has_refreshed())
+	if (gps.is_active())
 	{
-		latest_valid_latitude = gps.get_latitude();
-		latest_valid_longitude = gps.get_longitude();
+		gps.update();
+
+		if (gps.has_location())
+		{
+			latest_valid_latitude = gps.get_latitude();
+			latest_valid_longitude = gps.get_longitude();
+		}
 	}
 
 
@@ -96,7 +105,7 @@ void loop(void)
 	std::optional<bool> connected_wifi = wc.is_connected_to_wifi();
 	std::optional<bool> connected_server = wc.is_connected_to_server();
 	if (connected_wifi && !*connected_wifi)
-		wc.connect_to_wifi("Odido-06F315", "7GMBN7BMRHV88W8C");
+		wc.connect_to_wifi("ACSlab", "lab@ACS24");
 	else if (connected_server && !*connected_server)
 		wc.connect_to_server("itrackandi.watch", 8081);
 

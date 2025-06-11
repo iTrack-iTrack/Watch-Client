@@ -11,8 +11,9 @@ class position
 
 		bool is_active(void);
 
-		bool has_refreshed(void);
+		void update(void);
 
+		bool has_location(void);
 		double get_latitude(void);
 		double get_longitude(void);
 
