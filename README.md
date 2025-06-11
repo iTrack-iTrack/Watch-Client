@@ -1,6 +1,6 @@
-# Watch-Client
+# Watch-Client-Backend
 
-The Watch-Client repository is a project that collects sensor information from the user, displays it in the Serial, and uploads it in to the backend.
+The Watch-Client-Backend repository is a project that collects sensor information from the user, displays it in the Serial, and uploads it in to the backend.
 
 ## Setup
 
