@@ -98,8 +98,7 @@ void loop(void)
 	if (connected_wifi && !*connected_wifi)
 		wc.connect_to_wifi("Odido-06F315", "7GMBN7BMRHV88W8C");
 	else if (connected_server && !*connected_server)
-		wc.connect_to_server("192.168.1.79", 8081);
-		// wc.connect_to_server("itrackandi.watch", 8081); // TODO
+		wc.connect_to_server("itrackandi.watch", 8081);
 
 
 
