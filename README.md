@@ -15,3 +15,7 @@ To compile all the source code, the user must execute `platformio run` where it 
 To be able to upload the code, the ESP32 must be connected to the computer, in which the command can be run `sudo platformio run -t upload`.
 
 Should the user wish to monitor the Serial of the device, the following can be run `sudo platformio run -t monitor`.
+
+## Frontend
+
+The frontend for the Watch-Client exists in the the following repository: [Watch-Client-Frontend](https://github.com/chinenye13/Watch-Client-Frontend).
